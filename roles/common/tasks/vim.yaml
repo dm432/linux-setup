@@ -1,0 +1,4 @@
+- name: Install Vim apt package
+  ansible.builtin.apt:
+    name: vim-gtk3
+    state: present
