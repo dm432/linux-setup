@@ -62,10 +62,17 @@
     dest: "/home/{{ local_user }}/powerlevel10k"
     depth: 1
 
-- name: "Copy custom configs"
+- name: "Copy .zshrc"
   ansible.builtin.copy:
-    src: "zsh"
-    dest: "/home/{{ local_user }}/"
+    src: "zsh/.zshrc"
+    dest: "/home/{{ local_user }}/.zshrc"
+    owner: "{{ local_user }}"
+    backup: yes
+
+- name: "Copy .p10k.zsh"
+  ansible.builtin.copy:
+    src: "zsh/.p10k.zsh"
+    dest: "/home/{{ local_user }}/.p10k.zsh"
     owner: "{{ local_user }}"
     backup: yes
 
