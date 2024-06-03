@@ -1,4 +1,41 @@
-- name: Install Vim apt package
-  ansible.builtin.apt:
-    name: vim-gtk3
-    state: present
+- name: "Install Neovim from GitHub Releases"
+  ansible.builtin.unarchive:
+    src: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
+    dest: "/opt/"
+    remote_src: yes
+    owner: "root"
+  become: true
+
+- name: "Add Neovim to PATH in .bashrc"
+  ansible.builtin.lineinfile:
+    path: "/home/{{ local_user }}/.bashrc"
+    line: "export PATH=\"$PATH:/opt/nvim-linux64/bin\""
+
+- name: "Add Neovim to PATH in .zshrc"
+  ansible.builtin.lineinfile:
+    path: "/home/{{ local_user }}/.zshrc"
+    line: "export PATH=\"$PATH:/opt/nvim-linux64/bin\""
+  when: zsh == "true"
+
+- name: "Add Neovim alias to .bashrc"
+  ansible.builtin.lineinfile:
+    path: "/home/{{ local_user }}/.bashrc"
+    line: "alias vi=\"nvim\""
+
+- name: "Add Neovim alias to .zshrc"
+  ansible.builtin.lineinfile:
+    path: "/home/{{ local_user }}/.zshrc"
+    line: "alias vi=\"nvim\""
+  when: zsh == "true"
+
+- name: "Copy custom Neovim config"
+  ansible.builtin.copy:
+    src: "nvim"
+    dest: "/home/{{ local_user }}/.config/"
+    owner: "{{ local_user }}"
+    backup: yes
+
+- name: "Set Neovim as default editor"
+  community.general.alternatives:
+    name: "editor"
+    path: "/opt/nvim-linux64/bin/nvim"

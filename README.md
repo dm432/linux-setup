@@ -1,4 +1,4 @@
-# My Daily Post-Install Script 
+# Setup for my Ubuntu installation 
 [![Code license (MIT)](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/dm432/post-install/blob/master/LICENSE)
 
 This repo contains Ansible playbooks to configure your system as a development machine upon a clean install. The playbooks should run in Debian based system with minor modifications but was only tested with __Ubuntu 24.04__.
@@ -16,3 +16,17 @@ This repo contains Ansible playbooks to configure your system as a development m
   ./setup.sh
   ```
 - **_Please Note:_** The playbooks may overwrite your existing files! Make sure to back them up.
+
+---
+
+## 📖 Neovim config
+<details>
+  <summary>Key Bindings: All remapped key bindings (and some default ones that I tend to forget)</summary>
+
+  | Action                   | Key        |
+  | ------------------------ |----------- |
+  | Exit insert mode         | jk         |
+  | Open *Project View*      | Space + pv |
+  | *Clear* Search Highlight | Space + c  |
+  
+</details>
