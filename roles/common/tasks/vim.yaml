@@ -6,27 +6,76 @@
     owner: "root"
   become: true
 
-- name: "Add Neovim to PATH in .bashrc"
-  ansible.builtin.lineinfile:
-    path: "/home/{{ local_user }}/.bashrc"
-    line: "export PATH=\"$PATH:/opt/nvim-linux64/bin\""
+- name: "Create Neovim symlink"
+  ansible.builtin.file:
+    dest: "/usr/local/bin/nvim"
+    src: "/opt/nvim-linux64/bin/nvim"
+    state: link
+    force: yes
 
-- name: "Add Neovim to PATH in .zshrc"
-  ansible.builtin.lineinfile:
-    path: "/home/{{ local_user }}/.zshrc"
-    line: "export PATH=\"$PATH:/opt/nvim-linux64/bin\""
-  when: zsh == "true"
+- name: Get the latest Lazygit release version
+  ansible.builtin.uri:
+    url: "https://api.github.com/repos/jesseduffield/lazygit/releases/latest"
+    return_content: yes
+  register: lazygit_release
 
-- name: "Add Neovim alias to .bashrc"
-  ansible.builtin.lineinfile:
-    path: "/home/{{ local_user }}/.bashrc"
-    line: "alias vi=\"nvim\""
+- name: Set Lazygit version as a fact
+  ansible.builtin.set_fact:
+    lazygit_version: "{{ lazygit_release.json.tag_name[1:] }}"
 
-- name: "Add Neovim alias to .zshrc"
-  ansible.builtin.lineinfile:
-    path: "/home/{{ local_user }}/.zshrc"
-    line: "alias vi=\"nvim\""
-  when: zsh == "true"
+- name: Download Lazygit from GitHub Releases
+  ansible.builtin.get_url:
+    url: "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_{{ lazygit_version }}_Linux_x86_64.tar.gz"
+    dest: "/tmp/lazygit_{{ lazygit_version }}_Linux_x86_64.tar.gz"
+    mode: '0755'
+
+- name: Extract Lazygit from archive 
+  ansible.builtin.unarchive:
+    src: "/tmp/lazygit_{{ lazygit_version }}_Linux_x86_64.tar.gz"
+    dest: "/tmp"
+    remote_src: yes
+
+- name: Install Lazygit binary
+  ansible.builtin.copy:
+    src: "/tmp/lazygit"
+    dest: "/usr/local/bin/lazygit"
+    mode: '0755'
+
+- name: Update .bashrc
+  block:
+    - name: Check for .bashrc
+      ansible.builtin.stat:
+        path: "/home/{{ local_user }}/.bashrc"
+      register: bashrc
+      changed_when: false
+
+    - name: Add nvim aliases to .bashrc
+      ansible.builtin.lineinfile:
+        path: "/home/{{ local_user }}/.bashrc"
+        line: "{{ item }}"
+        state: present
+      loop:
+        - "alias vi=\"nvim\""
+        - "alias vim=\"nvim\""
+      when: bashrc.stat.exists
+
+- name: Update .zshrc
+  block:
+    - name: Check for .zshrc
+      ansible.builtin.stat:
+        path: "/home/{{ local_user }}/.zshrc"
+      register: zshrc
+      changed_when: false
+
+    - name: Add nvim aliases to .zshrc
+      ansible.builtin.lineinfile:
+        path: "/home/{{ local_user }}/.zshrc"
+        line: "{{ item }}"
+        state: present
+      loop:
+        - "alias vi=\"nvim\""
+        - "alias vim=\"nvim\""
+      when: zshrc.stat.exists
 
 - name: "Copy custom Neovim config"
   ansible.builtin.copy:

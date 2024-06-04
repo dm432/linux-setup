@@ -27,7 +27,7 @@ This repo contains Ansible playbooks to configure your system as a development m
   <summary>Key Bindings: All remapped key bindings (and some default ones that I tend to forget)</summary>
 
   | Action                                                    | Key            |
-  | --------------------------------------------------------- |-------------   |
+  | --------------------------------------------------------- |--------------  |
   | Exit insert mode                                          | `jk`           |
   | *Clear* Search Highlight                                  | `Space + c`    |
   | *Project View*: Open                                      | `Space + pv`   |
@@ -43,5 +43,13 @@ This repo contains Ansible playbooks to configure your system as a development m
   | Autocomplete: Previous                                    | `Ctrl + p`     |
   | Autocomplete: Next                                        | `Ctrl + n`     |
   | Autocomplete: Confirm                                     | `Ctrl + y`     |
+  | *Harpoon*: Toggle quick menu                              | `Ctrl + h`     |
+  | Harpoon: Add file                                         | `Space + a`    |
+  | Harpoon: Jump to file 1                                   | `Ctrl + a`     |
+  | Harpoon: Jump to file 2                                   | `Ctrl + s`     |
+  | Harpoon: Jump to file 3                                   | `Ctrl + d`     |
+  | Harpoon: Jump to file 4                                   | `Ctrl + f`     |
+  | *Lazy Git*: Open menu                                     | `Space + lg`   |
+  | Open Mason menu                                           | `:Mason`       |
 
 </details>
