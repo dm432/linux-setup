@@ -23,6 +23,7 @@ This repo contains Ansible playbooks to configure your system as a development m
 - **_Please Note:_** The playbooks may overwrite your existing files! Make sure to back them up.
 
 #### Manual Steps that may be required:
+- _zsh as default shell:_ Will not work if you are using distributed authentication. You may have to set zsh as default shell yourself.
 - _Powerlevel10k zsh theme:_ If the icons are not displayed correctly, make sure to set your terminal font to MesloLGS NF. See [here](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#meslo-nerd-font-patched-for-powerlevel10k) for more details.
 
 ---

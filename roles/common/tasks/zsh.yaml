@@ -7,6 +7,7 @@
   ansible.builtin.user:
     name: "{{ local_user }}"
     shell: "/bin/zsh"
+  ignore_errors: true
 
 - name: Download Oh My zsh
   ansible.builtin.git:
