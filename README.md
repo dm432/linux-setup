@@ -49,7 +49,7 @@ This repo contains Ansible playbooks to configure your system as a development m
   | Harpoon: Jump to file 2                                   | `Ctrl + s`     |
   | Harpoon: Jump to file 3                                   | `Ctrl + d`     |
   | Harpoon: Jump to file 4                                   | `Ctrl + f`     |
-  | *Lazy Git*: Open menu                                     | `Space + lg`   |
+  | Fugitive: Open *Git*                                      | `Space + g`    |
   | Open Mason menu                                           | `:Mason`       |
 
 </details>
