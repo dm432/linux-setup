@@ -21,6 +21,6 @@ if [ -e inventory_local.ini ] ; then
   LOCAL_INVENTORY="-i inventory_local.ini"
 fi
 
-ansible-playbook -v setup.yaml -i inventory.ini --extra-vars "local_user=$USRNAME"
+ansible-playbook -v setup.yaml $LOCAL_INVENTORY --extra-vars "local_user=$USRNAME"
 
 apt autoremove -y

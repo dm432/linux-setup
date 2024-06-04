@@ -8,8 +8,13 @@ This repo contains Ansible playbooks to configure your system as a development m
 - [Ansible](https://github.com/ansible/ansible): `sudo apt install ansible`
 
 #### Steps:
-- **Step 1**: Clone the repo using `git clone`.
-- **Step 2** (optional): Select what you want to install by changing the boolean flags in the `inventory.ini` file.
+- **Step 1** Clone the repo:
+  ```bash
+  git clone https://github.com/dm432/linux-setup.git && cd linux-setup
+  ```
+- **Step 2** Select what you want to install: 
+    1. `cp inventory.ini inventory_local.ini` 
+    2. Open the `inventory_local.ini` file with your favorite edior and change the boolean flags.
 - **Step 3**: Run the playbooks using the `setup.sh` script:
   ```bash
   chmod +x setup.sh
@@ -49,7 +54,7 @@ This repo contains Ansible playbooks to configure your system as a development m
   | Harpoon: Jump to file 2                                   | `Ctrl + s`     |
   | Harpoon: Jump to file 3                                   | `Ctrl + d`     |
   | Harpoon: Jump to file 4                                   | `Ctrl + f`     |
-  | Fugitive: Open *Git*                                      | `Space + g`    |
+  | Fugitive: Open *Git* status                               | `Space + g`    |
   | Open Mason menu                                           | `:Mason`       |
 
 </details>

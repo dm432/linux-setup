@@ -13,33 +13,10 @@
     state: link
     force: yes
 
-- name: Get the latest Lazygit release version
-  ansible.builtin.uri:
-    url: "https://api.github.com/repos/jesseduffield/lazygit/releases/latest"
-    return_content: yes
-  register: lazygit_release
-
-- name: Set Lazygit version as a fact
-  ansible.builtin.set_fact:
-    lazygit_version: "{{ lazygit_release.json.tag_name[1:] }}"
-
-- name: Download Lazygit from GitHub Releases
-  ansible.builtin.get_url:
-    url: "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_{{ lazygit_version }}_Linux_x86_64.tar.gz"
-    dest: "/tmp/lazygit_{{ lazygit_version }}_Linux_x86_64.tar.gz"
-    mode: '0755'
-
-- name: Extract Lazygit from archive 
-  ansible.builtin.unarchive:
-    src: "/tmp/lazygit_{{ lazygit_version }}_Linux_x86_64.tar.gz"
-    dest: "/tmp"
-    remote_src: yes
-
-- name: Install Lazygit binary
-  ansible.builtin.copy:
-    src: "/tmp/lazygit"
-    dest: "/usr/local/bin/lazygit"
-    mode: '0755'
+- name: Install ripgrep apt package
+  ansible.builtin.apt:
+    name: ripgrep
+    state: present
 
 - name: Update .bashrc
   block:
