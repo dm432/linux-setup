@@ -1,5 +1,5 @@
-- ansible.builtin.include_tasks: zsh.yaml
-  when: zsh == "true"
+- ansible.builtin.include_tasks: shell.yaml
+  when: shell == "true"
 
-- ansible.builtin.include_tasks: vim.yaml
-  when: vim == "true"
+- ansible.builtin.include_tasks: editor.yaml
+  when: editor == "true"

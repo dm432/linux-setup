@@ -32,6 +32,8 @@
         line: "{{ item }}"
         state: present
       loop:
+        - "export VISUAL=\"nvim\""
+        - "export EDITOR=\"nvim\""
         - "alias vi=\"nvim\""
         - "alias vim=\"nvim\""
       when: bashrc.stat.exists
@@ -50,6 +52,8 @@
         line: "{{ item }}"
         state: present
       loop:
+        - "export VISUAL=\"nvim\""
+        - "export EDITOR=\"nvim\""
         - "alias vi=\"nvim\""
         - "alias vim=\"nvim\""
       when: zshrc.stat.exists
