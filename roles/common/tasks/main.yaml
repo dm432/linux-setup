@@ -3,3 +3,6 @@
 
 - ansible.builtin.include_tasks: editor.yaml
   when: editor == "true"
+
+- ansible.builtin.include_tasks: discord.yaml
+  when: discord == "true"
