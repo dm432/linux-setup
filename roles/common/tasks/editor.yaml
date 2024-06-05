@@ -18,6 +18,12 @@
     name: ripgrep
     state: present
 
+# C compiler is needed
+- name: Install build-essential apt package
+  ansible.builtin.apt:
+    name: build-essential
+    state: present
+
 - name: Update .bashrc
   block:
     - name: Check for .bashrc
