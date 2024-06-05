@@ -21,3 +21,18 @@
     src: "kde/konsole/dm432.profile"
     dest: "/home/{{ local_user }}/.local/share/konsole"
     mode: "0644"
+
+- name: Download Orchis-kde theme
+  ansible.builtin.git:
+    repo: "https://github.com/vinceliuice/Orchis-kde"
+    dest: "/tmp/Orchis-kde"
+    depth: 1
+
+- name: Copy Orchis-dark look-and-feel
+  ansible.builtin.copy:
+    src: "/tmp/Orchis-kde/plasma/look-and-feel/com.github.vinceliuice.Orchis-dark/"
+    dest: "/home/{{ local_user }}/.local/share/plasma/look-and-feel/com.github.vinceliuice.Orchis-dark/"
+
+- name: Set Orchis-dark look-and-feel
+  ansible.builtin.command: "lookandfeeltool -a \"/home/{{ local_user }}/.local/share/plasma/look-and-feel/com.github.vinceliuice.Orchis-dark\""
+
