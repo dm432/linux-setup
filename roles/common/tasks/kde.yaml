@@ -28,11 +28,6 @@
     dest: "/tmp/Orchis-kde"
     depth: 1
 
-- name: Copy Orchis-dark look-and-feel
-  ansible.builtin.copy:
-    src: "/tmp/Orchis-kde/plasma/look-and-feel/com.github.vinceliuice.Orchis-dark/"
-    dest: "/home/{{ local_user }}/.local/share/plasma/look-and-feel/com.github.vinceliuice.Orchis-dark/"
-
-- name: Set Orchis-dark look-and-feel
-  ansible.builtin.command: "lookandfeeltool -a \"/home/{{ local_user }}/.local/share/plasma/look-and-feel/com.github.vinceliuice.Orchis-dark\""
+- name: Install Orchis-kde theme
+  ansible.builtin.shell: "/tmp/Orchis-kde/install.sh"
 
