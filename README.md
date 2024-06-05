@@ -25,6 +25,7 @@ This repo contains Ansible playbooks to configure your system as a development m
 #### Manual Steps that may be required:
 - _zsh as default shell:_ You may have to set default shell shell yourself to `/bin/zsh` for example if you are using distributed authentication.
 - _terminal font:_ You have to set your terminal font to `JetbrainsMono Nerd Font`. (The font will be downloaded and installed by the ansible playbooks).
+- _konsole profile:_ To use my konsole profile, goto Settings -> Switch Profile and select `dm432`.
 
 ---
 

@@ -1,6 +1,9 @@
 - ansible.builtin.include_tasks: shell.yaml
   when: shell == "true"
 
+- ansible.builtin.include_tasks: kde.yaml
+  when: kde == "true"
+
 - ansible.builtin.include_tasks: editor.yaml
   when: editor == "true"
 
