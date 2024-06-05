@@ -28,9 +28,12 @@ This repo contains Ansible playbooks to configure your system as a development m
 
 ---
 
-## 📖 Neovim config
+## 📖 Wiki
+Usefull scripts that are added by the playbooks:
+  - `discord_update.sh`: Checks for a newer version and updates the discord app if needed. Is run after each reboot, but can also be run manually.
+
 <details>
-  <summary>Key Bindings: All remapped key bindings (and some default ones that I tend to forget)</summary>
+  <summary>Neovim Key Bindings: All remapped key bindings (and some default ones that I tend to forget)</summary>
 
   | Action                                                    | Key            |
   | --------------------------------------------------------- |--------------  |
@@ -55,7 +58,7 @@ This repo contains Ansible playbooks to configure your system as a development m
   | Harpoon: Jump to file 2                                   | `Ctrl + s`     |
   | Harpoon: Jump to file 3                                   | `Ctrl + d`     |
   | Harpoon: Jump to file 4                                   | `Ctrl + f`     |
-  | Fugitive: Open *Git* status                               | `Space + g`    |
+  | Fugitive: *Git* status                                    | `Space + g`    |
   | Open Mason menu                                           | `:Mason`       |
 
 </details>
