@@ -21,13 +21,3 @@
     src: "kde/konsole/dm432.profile"
     dest: "/home/{{ local_user }}/.local/share/konsole"
     mode: "0644"
-
-- name: Download Orchis-kde theme
-  ansible.builtin.git:
-    repo: "https://github.com/vinceliuice/Orchis-kde"
-    dest: "/tmp/Orchis-kde"
-    depth: 1
-
-- name: Install Orchis-kde theme
-  ansible.builtin.shell: "/tmp/Orchis-kde/install.sh"
-
