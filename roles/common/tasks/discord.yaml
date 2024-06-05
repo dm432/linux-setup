@@ -13,6 +13,11 @@
     content: |
       #!/bin/bash
 
+      # wait until network services are available and url can be resolved
+      while ! curl -ILSs "https://discord.com/api/download?platform=linux&format=deb" -o /dev/null; do
+        sleep 5
+      done
+
       TMPDIR=$(mktemp -d)
 
       cleanup() {
