@@ -25,5 +25,12 @@ return {
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+        vim.keymap.set('n', '<leader>b', builtin.buffers, {})
+
+        require("bufjump").setup({
+            forward_key = "<C-n>",
+            backward_key = "<C-m>",
+            on_success = nil
+        })
     end
 }

@@ -66,6 +66,9 @@ Usefull scripts that are added by the playbooks:
   | lsp: *Code action*                                        | `Space + lca`  |
   | lsp: *Open references*                                    | `Space + lor`  |
   | lsp: *Open floating* window                               | `Space + lof`  |
+  | List *buffers*                                            | `Space + b`    |
+  | *Next* buffer                                             | `Ctrl + n`     |
+  | Previous buffer                                           | `Ctrl + m`     |
   | Open Mason menu                                           | `:Mason`       |
 
 </details>
