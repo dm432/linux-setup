@@ -1,0 +1,61 @@
+# Install git from source as version v2.37.1+ is required for auto remote
+- name: Remove git provided from Ubuntu repos
+  ansible.builtin.package:
+    name: git
+    state: absent
+
+- name: Install git dependencies
+  ansible.builtin.package:
+    name:
+      - build-essential
+      - dh-autoreconf
+      - libcurl4-gnutls-dev
+      - libexpat1-dev
+      - gettext
+      - libz-dev
+      - libssl-dev
+      - asciidoc
+      - xmlto
+      - docbook2x
+    state: present
+
+- name: Find latest git version
+  ansible.builtin.uri:
+    url: "https://api.github.com/repos/git/git/tags"
+    return_content: yes
+    validate_certs: no
+    body_format: json
+  register: git_tags_response
+
+- name: Set git version to latest
+  ansible.builtin.set_fact:
+    git_version: "{{ git_tags_response.json[0].name | replace('v', '')  }}"
+
+- name: Download git
+  ansible.builtin.get_url:
+    url: "https://www.kernel.org/pub/software/scm/git/git-{{ git_version }}.tar.gz"
+    dest: "/tmp/git-{{ git_version }}.tar.gz"
+
+- name: Expand git archive
+  ansible.builtin.unarchive:
+    src: "/tmp/git-{{ git_version }}.tar.gz"
+    dest: "/tmp/"
+    mode: "0755"
+
+- name: Build git
+  ansible.builtin.shell:
+    cmd: "sudo make prefix=/usr/local all"
+    chdir: "/tmp/git-{{ git_version }}/"
+  become: true
+
+- name: Install git
+  ansible.builtin.shell:
+    cmd: "sudo make prefix=/usr/local install"
+    chdir: "/tmp/git-{{ git_version }}/"
+  become: true
+
+- name: Enable auto remote setup
+  community.general.git_config:
+    name: "push.autoSetupRemote"
+    scope: "global"
+    value: "true"
