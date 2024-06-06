@@ -60,6 +60,12 @@ Usefull scripts that are added by the playbooks:
   | Harpoon: Jump to file 3                                   | `Ctrl + d`     |
   | Harpoon: Jump to file 4                                   | `Ctrl + f`     |
   | Fugitive: *Git* status                                    | `Space + g`    |
+  | lsp: *Goto Definition*                                    | `gd`           |
+  | lsp: Open hover window                                    | `K`            |
+  | lsp: *Rename*                                             | `Space + lrn`  |
+  | lsp: *Code action*                                        | `Space + lca`  |
+  | lsp: *Open references*                                    | `Space + lor`  |
+  | lsp: *Open floating* window                               | `Space + lof`  |
   | Open Mason menu                                           | `:Mason`       |
 
 </details>
