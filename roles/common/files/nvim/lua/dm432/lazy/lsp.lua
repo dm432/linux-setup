@@ -11,6 +11,7 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
 
     config = function()
@@ -53,6 +54,13 @@ return {
                         }
                     }
                 end,
+            }
+        })
+        require("mason-tool-installer").setup({
+            ensure_installed = {
+                "ktlint",
+                "google-java-format",
+                "stylua",
             }
         })
 

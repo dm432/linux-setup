@@ -69,6 +69,7 @@ Usefull scripts that are added by the playbooks:
   | List *buffers*                                            | `Space + b`    |
   | *Next* buffer                                             | `Ctrl + n`     |
   | Previous buffer                                           | `Ctrl + m`     |
+  | Conform: Trigger formatting                               | `Space + l`    |
   | Open Mason menu                                           | `:Mason`       |
 
 </details>
