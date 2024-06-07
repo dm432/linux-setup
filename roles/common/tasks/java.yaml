@@ -1,0 +1,38 @@
+- name: Check if SDKMAN! is already installed
+  ansible.builtin.stat:
+    path: "/home/{{ local_user }}/.sdkman/bin/sdkman-init.sh"
+  register: sdkman
+  changed_when: false
+
+- name: Download SDKMAN! install script
+  ansible.builtin.get_url:
+    url: "https://get.sdkman.io"
+    dest: "/tmp/install_sdkman.sh"
+    mode: "0755" 
+  when: not sdkman.stat.exists
+
+- name: Install SDKMAN!
+  ansible.builtin.shell: "bash /tmp/install_sdkman.sh"
+  become: true
+  become_user: "{{ local_user }}"
+  when: not sdkman.stat.exists
+
+- name: Update SDKMAN! if already installed
+  ansible.builtin.shell: |
+    source /home/{{ local_user }}/.sdkman/bin/sdkman-init.sh
+    sdk selfupdate force
+  args:
+    executable: "/bin/bash"
+  become: true
+  become_user: "{{ local_user }}"
+  when: sdkman.stat.exists
+
+- name: Install latest java version
+  ansible.builtin.shell: |
+    source /home/{{ local_user }}/.sdkman/bin/sdkman-init.sh
+    sdk install java
+  args:
+    executable: "/bin/bash"
+  become: true
+  become_user: "{{ local_user }}"
+
