@@ -1,0 +1,34 @@
+- name: Find latest Helm version
+  ansible.builtin.uri:
+    url: "https://api.github.com/repos/helm/helm/releases"
+    return_content: yes
+    validate_certs: no
+    body_format: json
+  register: helm_releases_response
+
+- name: Set Helm version to latest
+  ansible.builtin.set_fact:
+    helm_version: "{{ helm_releases_response.json[0].tag_name | replace('v', '')  }}"
+
+- name: Download Helm
+  ansible.builtin.get_url:
+    url: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+    dest: "/tmp/helm-{{ helm_version }}.tar.gz"
+
+- name: Create directory for unarchive 
+  file:
+    path: "/tmp/helm/"
+    state: directory
+
+- name: Expand Helm archive
+  ansible.builtin.unarchive:
+    src: "/tmp/helm-{{ helm_version }}.tar.gz"
+    dest: "/tmp/helm"
+    mode: "0755"
+
+- name: Install Helm binary
+  ansible.builtin.copy:
+    src: "/tmp/helm/linux-amd64/helm"
+    dest: "/usr/local/bin/helm"
+    mode: '0755'
+
