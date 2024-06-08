@@ -1,0 +1,18 @@
+- name: Add Vivaldi APT key
+  ansible.builtin.apt_key:
+    data: "{{ lookup('file', 'apt-keys/apt-key_vivaldi.pub') }}"
+    state: present
+
+- name: Add Vivaldi repository
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://repo.vivaldi.com/archive/deb stable main
+    filename: vivaldi
+    state: present
+  become: true
+
+- name: Install Vivaldi
+  ansible.builtin.apt:
+    name: vivaldi-stable
+    state: latest
+
+

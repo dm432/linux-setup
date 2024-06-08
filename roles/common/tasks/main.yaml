@@ -29,3 +29,6 @@
 
 - ansible.builtin.include_tasks: discord.yaml
   when: discord == "true"
+
+- ansible.builtin.include_tasks: vivaldi.yaml
+  when: vivaldi == "true"
