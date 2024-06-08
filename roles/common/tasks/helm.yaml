@@ -10,25 +10,23 @@
   ansible.builtin.set_fact:
     helm_version: "{{ helm_releases_response.json[0].tag_name | replace('v', '')  }}"
 
-- name: Download Helm
-  ansible.builtin.get_url:
-    url: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
-    dest: "/tmp/helm-{{ helm_version }}.tar.gz"
-
-- name: Create directory for unarchive 
-  file:
-    path: "/tmp/helm/"
+- name: Create Helm directory
+  ansible.builtin.file:
+    dest: "/opt/helm"
     state: directory
+    recurse: true
+  become: true
 
-- name: Expand Helm archive
+- name: Install Helm {{ helm_version }}
   ansible.builtin.unarchive:
-    src: "/tmp/helm-{{ helm_version }}.tar.gz"
-    dest: "/tmp/helm"
-    mode: "0755"
+    src: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+    dest: "/opt/helm"
+    remote_src: yes
+  become: true
 
-- name: Install Helm binary
-  ansible.builtin.copy:
-    src: "/tmp/helm/linux-amd64/helm"
+- name: Symlink Helm binary
+  ansible.builtin.file:
+    src: "/opt/helm/linux-amd64/helm"
     dest: "/usr/local/bin/helm"
-    mode: '0755'
+    state: link
 

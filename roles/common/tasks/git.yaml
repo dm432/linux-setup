@@ -31,27 +31,30 @@
   ansible.builtin.set_fact:
     git_version: "{{ git_tags_response.json[0].name | replace('v', '')  }}"
 
-- name: Download git
-  ansible.builtin.get_url:
-    url: "https://www.kernel.org/pub/software/scm/git/git-{{ git_version }}.tar.gz"
-    dest: "/tmp/git-{{ git_version }}.tar.gz"
+- name: Create Git directory
+  ansible.builtin.file:
+    dest: "/opt/git"
+    state: directory
+    recurse: true
+  become: true
 
 - name: Expand git archive
   ansible.builtin.unarchive:
-    src: "/tmp/git-{{ git_version }}.tar.gz"
-    dest: "/tmp/"
+    src: "https://www.kernel.org/pub/software/scm/git/git-{{ git_version }}.tar.gz"
+    dest: "/opt/git"
+    remote_src: yes
     mode: "0755"
 
 - name: Build git
   ansible.builtin.shell:
     cmd: "make prefix=/usr/local all"
-    chdir: "/tmp/git-{{ git_version }}/"
+    chdir: "/opt/git/git-{{ git_version }}/"
   become: true
 
 - name: Install git
   ansible.builtin.shell:
     cmd: "make prefix=/usr/local install"
-    chdir: "/tmp/git-{{ git_version }}/"
+    chdir: "/opt/git/git-{{ git_version }}/"
   become: true
 
 - name: Enable auto remote setup

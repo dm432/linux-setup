@@ -23,6 +23,9 @@
 - ansible.builtin.include_tasks: java.yaml
   when: java == "true"
 
+- ansible.builtin.include_tasks: k9s.yaml
+  when: k9s == "true"
+
 
 - ansible.builtin.include_tasks: discord.yaml
   when: discord == "true"

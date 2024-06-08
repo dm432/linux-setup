@@ -1,0 +1,31 @@
+- name: Find latest K9s version
+  ansible.builtin.uri:
+    url: "https://api.github.com/repos/derailed/k9s/releases"
+    return_content: yes
+    validate_certs: no
+    body_format: json
+  register: k9s_releases_response
+
+- name: Set K9s version to latest
+  ansible.builtin.set_fact:
+    k9s_version: "{{ k9s_releases_response.json[0].tag_name | replace('v', '')  }}"
+
+- name: Create K9s directory
+  ansible.builtin.file:
+    dest: "/opt/k9s"
+    state: directory
+    recurse: true
+  become: true
+
+- name: Install K9s {{ k9s_version }}
+  ansible.builtin.unarchive:
+    src: "https://github.com/derailed/k9s/releases/download/v{{k9s_version}}/k9s_Linux_amd64.tar.gz"
+    dest: "/opt/k9s"
+    remote_src: yes
+  become: true
+
+- name: Symlink K9s binary
+  ansible.builtin.file:
+    src: /opt/k9s/k9s
+    dest: /usr/local/bin/k9s
+    state: link
