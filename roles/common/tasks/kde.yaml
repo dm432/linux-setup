@@ -1,14 +1,14 @@
 - name: Install KDE Plasma
   ansible.builtin.apt:
     name: kubuntu-desktop 
-    state: present
+    state: latest
 
 - name: Install KDE applications
   ansible.builtin.apt:
     pkg:
       - kontact 
       - kmail
-    state: present
+    state: latest
 
 - name: Create Konsole profile directory
   ansible.builtin.file:

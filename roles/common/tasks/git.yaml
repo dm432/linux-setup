@@ -17,7 +17,7 @@
       - asciidoc
       - xmlto
       - docbook2x
-    state: present
+    state: latest
 
 - name: Find latest git version
   ansible.builtin.uri:
