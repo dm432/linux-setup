@@ -1,6 +1,6 @@
-- name: Add Vivaldi APT key
+- name: Add Vivaldi apt key
   ansible.builtin.apt_key:
-    data: "{{ lookup('file', 'apt-keys/apt-key_vivaldi.pub') }}"
+    url: "https://repo.vivaldi.com/archive/linux_signing_key.pub"
     state: present
 
 - name: Add Vivaldi repository

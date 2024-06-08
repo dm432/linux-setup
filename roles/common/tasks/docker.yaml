@@ -10,15 +10,14 @@
       - runc
     state: absent
 
-- name: Add Docker APT key
-  ansible.builtin.apt_key:
-    data: "{{ lookup('file', 'apt-keys/apt-key_docker.pub') }}"
-    state: present
+- name: Add Docker APT key 
+  ansible.builtin.get_url:
+    url: "https://download.docker.com/linux/debian/gpg"
+    dest: "/etc/apt/keyrings/docker.asc"
 
 - name: Add Docker repository
-  become: true
   ansible.builtin.apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
     filename: docker
     state: present
 

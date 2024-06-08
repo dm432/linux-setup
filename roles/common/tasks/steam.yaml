@@ -1,0 +1,18 @@
+- name: Add Steam APT key 
+  ansible.builtin.get_url:
+    url: "http://repo.steampowered.com/steam/archive/stable/steam.gpg"
+    dest: "/etc/apt/keyrings/steam.gpg"
+
+- name: Add Steam repository
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/steam.gpg] https://repo.steampowered.com/steam/ stable steam
+    filename: steam
+    state: present
+
+- name: Install Steam 
+  ansible.builtin.package:
+    name: steam-launcher
+    state: latest
+
+
+
