@@ -14,6 +14,9 @@
 - ansible.builtin.include_tasks: git.yaml
   when: git == "true"
 
+- ansible.builtin.include_tasks: go-tasks.yaml
+  when: go_tasks == "true"
+
 - ansible.builtin.include_tasks: java.yaml
   when: java == "true"
 

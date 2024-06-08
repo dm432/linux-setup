@@ -1,0 +1,4 @@
+- name: Install Go-Tasks
+  ansible.builtin.shell:
+    cmd: "sh -c \"$(curl --location https://taskfile.dev/install.sh)\" -- -d -b /usr/local/bin"
+  become: true
