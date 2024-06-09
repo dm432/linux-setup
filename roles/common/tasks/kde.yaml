@@ -9,15 +9,3 @@
       - kontact 
       - kmail
     state: latest
-
-- name: Create Konsole profile directory
-  ansible.builtin.file:
-    path: "/home/{{ local_user }}/.local/share/konsole"
-    mode: "0775"
-    state: directory
-
-- name: Copy Konsole profile
-  ansible.builtin.copy:
-    src: "kde/konsole/dm432.profile"
-    dest: "/home/{{ local_user }}/.local/share/konsole"
-    mode: "0644"

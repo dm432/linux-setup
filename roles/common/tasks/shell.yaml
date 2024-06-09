@@ -41,31 +41,6 @@
     line: "source \"/home/{{ local_user }}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh\""
     state: present
 
-- name: Download JetBrainsMono Nerd Font
-  ansible.builtin.get_url:
-    url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip"
-    dest: "/tmp/JetBrainsMono.zip"
-    mode: '0755'
-
-- name: Create directory for unarchive 
-  file:
-    path: "/tmp/jetbrainsmono/"
-    state: directory
-
-- name: Extract JetBrainsMono Nerd Font from archive 
-  ansible.builtin.unarchive:
-    src: "/tmp/JetBrainsMono.zip"
-    dest: "/tmp/jetbrainsmono/"
-    remote_src: yes
-
-- name: Install JetBrainsMono Nerd Fonts
-  ansible.builtin.copy:
-    src: "{{ item }}"
-    dest: "/usr/share/fonts/truetype/custom/"
-    mode: '0755'
-  with_fileglob:
-    - "/tmp/jetbrainsmono/JetBrainsMonoNerdFont-*.ttf"
-
 - name: Download starship from GitHub Releases
   ansible.builtin.get_url:
     url: "https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-linux-gnu.tar.gz"
@@ -100,3 +75,25 @@
     path: "/home/{{ local_user }}/.zshrc"
     line: "alias ll=\"ls -alF\""
     state: present
+
+- name: Find latest WezTerm version
+  ansible.builtin.uri:
+    url: "https://api.github.com/repos/wez/wezterm/releases"
+    return_content: yes
+    validate_certs: no
+    body_format: json
+  register: wezterm_releases_response
+
+- name: Set WezTerm version to latest
+  ansible.builtin.set_fact:
+    wezterm_version: "{{ wezterm_releases_response.json[0].tag_name }}"
+
+- name: Install WezTerm {{ wezterm_version }}
+  ansible.builtin.apt:
+    deb: "https://github.com/wez/wezterm/releases/download/{{ wezterm_version }}/wezterm-{{ wezterm_version }}.Ubuntu22.04.deb"
+
+- name: Copy WezTerm configuration
+  ansible.builtin.copy:
+    src: "shell/.wezterm.lua"
+    dest: "/home/{{ local_user }}/.wezterm.lua"
+

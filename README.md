@@ -24,8 +24,7 @@ This repo contains Ansible playbooks to configure your system as a development m
 
 #### Manual Steps that may be required:
 - _zsh as default shell:_ You may have to set default shell shell yourself to `/bin/zsh` for example if you are using distributed authentication.
-- _terminal font (not needed if you use the konsole profile):_ You have to set your terminal font to `JetbrainsMono Nerd Font`. (The font will be downloaded and installed by the ansible playbooks).
-- _konsole profile:_ To use my konsole profile, goto Settings -> Switch Profile and select `dm432`.
+- _terminal font (only needed if you dont use WezTerm):_ You have to set your terminal font to any [Nerd Font](https://www.nerdfonts.com/).
 
 ---
 
@@ -73,3 +72,12 @@ Usefull scripts that are added by the playbooks:
   | Open Mason menu                                           | `:Mason`       |
 
 </details>
+
+<details>
+  <summary>Other Keybindings:</summary>
+
+  | Action                                                    | Key            |
+  | --------------------------------------------------------- |--------------  |
+  | WezTerm: Toogle fullscreen                                | `Ctrl + f`     |
+</details>
+ 
