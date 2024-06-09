@@ -9,37 +9,30 @@
     shell: "/bin/zsh"
   ignore_errors: true
 
-- name: Create .zshrc file if not exists
-  copy:
-    content: ""
+- name: Download Oh My Zsh
+  ansible.builtin.git:
+    repo: "https://github.com/ohmyzsh/ohmyzsh"
+    dest: "/home/{{ local_user }}/.oh-my-zsh"
+    depth: 1
+
+- name: Copy .zshrc 
+  ansible.builtin.copy:
+    src: "shell/.zshrc"
     dest: "/home/{{ local_user }}/.zshrc"
-    force: false
     owner: "{{ local_user }}"
     group: "{{ local_user }}"
 
 - name: Download zsh-autosuggestions plugin 
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions"
-    dest: "/home/{{ local_user }}/.zsh/zsh-autosuggestions"
+    dest: "/home/{{ local_user }}/.oh-my-zsh/plugins/zsh-autosuggestions"
     depth: 1
-
-- name: Add zsh-autosuggestions plugin to .zshrc
-  ansible.builtin.lineinfile:
-    path: "/home/{{ local_user }}/.zshrc"
-    line: "source \"/home/{{ local_user }}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh\""
-    state: present
 
 - name: Download zsh-syntax-highlighting plugin 
   ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-    dest: "/home/{{ local_user }}/.zsh/zsh-syntax-highlighting"
+    dest: "/home/{{ local_user }}/.oh-my-zsh/plugins/zsh-syntax-highlighting"
     depth: 1
-
-- name: Add zsh-syntax-highlighting plugin to .zshrc
-  ansible.builtin.lineinfile:
-    path: "/home/{{ local_user }}/.zshrc"
-    line: "source \"/home/{{ local_user }}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh\""
-    state: present
 
 - name: Download starship from GitHub Releases
   ansible.builtin.get_url:
@@ -59,22 +52,10 @@
     dest: "/usr/local/bin/starship"
     mode: '0755'
 
-- name: Add starship to .zshrc
-  ansible.builtin.lineinfile:
-    path: "/home/{{ local_user }}/.zshrc"
-    line: "eval \"$(starship init zsh)\""
-    state: present
-
 - name: Copy starship configuration
   ansible.builtin.copy:
     src: "shell/starship.toml"
     dest: "/home/{{ local_user }}/.config/starship.toml"
-
-- name: Add ll alias to .zshrc
-  ansible.builtin.lineinfile:
-    path: "/home/{{ local_user }}/.zshrc"
-    line: "alias ll=\"ls -alF\""
-    state: present
 
 - name: Find latest WezTerm version
   ansible.builtin.uri:
