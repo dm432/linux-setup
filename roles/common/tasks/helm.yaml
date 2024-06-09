@@ -3,7 +3,7 @@
     url: "https://api.github.com/repos/helm/helm/releases"
     return_content: yes
     validate_certs: no
-    body_format: json
+    body_format: raw
   register: helm_releases_response
 
 - name: Set Helm version to latest
@@ -29,4 +29,4 @@
     src: "/opt/helm/linux-amd64/helm"
     dest: "/usr/local/bin/helm"
     state: link
-
+  become: true

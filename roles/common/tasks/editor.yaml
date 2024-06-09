@@ -3,7 +3,6 @@
     src: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
     dest: "/opt/"
     remote_src: yes
-    owner: "root"
   become: true
 
 - name: "Create Neovim symlink"
@@ -12,6 +11,7 @@
     src: "/opt/nvim-linux64/bin/nvim"
     state: link
     force: yes
+  become: true
 
 - name: Install ripgrep apt package
   ansible.builtin.apt:
@@ -68,7 +68,6 @@
   ansible.builtin.copy:
     src: "nvim"
     dest: "/home/{{ local_user }}/.config/"
-    owner: "{{ local_user }}"
     backup: yes
 
 - name: "Set Neovim as default editor"

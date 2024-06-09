@@ -44,6 +44,7 @@
           sudo dpkg -i "$deb_file"
       fi
     mode: "0755"
+  become: true
 
 - name: Add update script cronjob
   ansible.builtin.cron:

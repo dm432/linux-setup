@@ -51,6 +51,7 @@
     src: "/tmp/starship"
     dest: "/usr/local/bin/starship"
     mode: '0755'
+  become: true
 
 - name: Copy starship configuration
   ansible.builtin.copy:
@@ -62,7 +63,7 @@
     url: "https://api.github.com/repos/wez/wezterm/releases"
     return_content: yes
     validate_certs: no
-    body_format: json
+    body_format: raw
   register: wezterm_releases_response
 
 - name: Set WezTerm version to latest
@@ -77,4 +78,3 @@
   ansible.builtin.copy:
     src: "shell/.wezterm.lua"
     dest: "/home/{{ local_user }}/.wezterm.lua"
-

@@ -24,7 +24,7 @@
     url: "https://api.github.com/repos/git/git/tags"
     return_content: yes
     validate_certs: no
-    body_format: json
+    body_format: raw
   register: git_tags_response
 
 - name: Set git version to latest
@@ -44,6 +44,7 @@
     dest: "/opt/git"
     remote_src: yes
     mode: "0755"
+  become: true
 
 - name: Build git
   ansible.builtin.shell:

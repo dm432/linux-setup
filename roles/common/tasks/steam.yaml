@@ -2,6 +2,7 @@
   ansible.builtin.get_url:
     url: "http://repo.steampowered.com/steam/archive/stable/steam.gpg"
     dest: "/etc/apt/keyrings/steam.gpg"
+  become: true
 
 - name: Add Steam repository
   ansible.builtin.apt_repository:
