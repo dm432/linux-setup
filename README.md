@@ -81,6 +81,7 @@ Usefull scripts that are added by the playbooks:
   | Action                                                    | Key              |
   | --------------------------------------------------------- |------------------|
   | WezTerm: Toogle fullscreen                                | `Ctrl + f`       |
+  | WezTerm: Open Emoji picker                                | `Ctrl + U`       |
   | Tmux: Leader key                                          | `Ctrl + Space`   |
   | Tmux: Vertical split                                      | `Leader + i`     |
   | Tmux: Horizontal split                                    | `Leader + u`     |
