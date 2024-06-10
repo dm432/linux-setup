@@ -26,12 +26,14 @@ This repo contains Ansible playbooks to configure your system as a development m
 - _zsh as default shell:_ You may have to set default shell shell yourself to `/bin/zsh` for example if you are using distributed authentication.
 - _terminal font (only needed if you dont use WezTerm):_ You have to set your terminal font to any [Nerd Font](https://www.nerdfonts.com/).
 - _Vivaldi Catppuccin theme:_ Goto `Settings -> Themes -> Open Theme...` and select the `Catppuccin.Mocha.Mauve.zip` file located at `~/.vivaldi/themes`.
+- _KDE Plasma theme:_ To apply the theme, login to kde plasma and run the following script: `/usr/local/bin/plasma_theme_init.sh`.
 
 ---
 
 ## 📖 Wiki
 Usefull scripts that are added by the playbooks:
   - `discord_update.sh`: Checks for a newer version and updates the discord app if needed. Is run after each reboot, but can also be run manually.
+  - `plasma_theme_init.sh`: Applies the kde plasma theme (only works when logged in to kde plasma).
 
 <details>
   <summary>Neovim Key Bindings: All remapped key bindings (and some default ones that I tend to forget)</summary>

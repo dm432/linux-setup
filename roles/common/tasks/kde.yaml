@@ -11,3 +11,28 @@
       - kmail
     state: latest
   become: true
+
+- name: Create KDE plasma directory
+  ansible.builtin.file:
+    dest: "/home/{{ local_user }}/.local/share/plasma"
+    state: directory
+    recurse: true
+ 
+- name: Copy wallpaper
+  ansible.builtin.copy:
+    src: "kde/wallpaper.png"
+    dest: "/home/{{ local_user }}/.local/share/plasma/wallpaper.png"
+
+- name: KDE Plasma theme init script
+  ansible.builtin.copy:
+    dest: "/usr/local/bin/plasma_theme_init.sh"
+    content: |
+      #!/bin/bash
+
+      USRNAME="$(whoami)"
+
+      plasma-apply-wallpaperimage /home/$USRNAME/.local/share/plasma/wallpaper.png
+    mode: "0755"
+  become: true
+
+
