@@ -8,6 +8,42 @@
     deb: "/tmp/discord.deb"
   become: true
 
+- name: Install betterdiscordctl
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl"
+    dest: "/usr/local/bin/betterdiscordctl"
+    mode: "0755"
+  become: true
+
+- name: Check if BetterDiscord is already installed
+  ansible.builtin.shell: "betterdiscordctl status | grep 'injected:' | sed 's/^.*: //'"
+  register: betterdiscord
+
+- name: Install BetterDiscord if not installed
+  ansible.builtin.shell: "betterdiscordctl install"
+  become_user: "{{ local_user }}"
+  become: true
+  when: betterdiscord.stdout == "no"
+
+- name: Update BetterDiscord if already installed
+  ansible.builtin.shell: "betterdiscordctl reinstall"
+  become_user: "{{ local_user }}"
+  become: true
+  when: betterdiscord.stdout == "yes"
+
+- name: Download BetterDiscord Catppucchin theme
+  ansible.builtin.get_url:
+    url: "https://github.com/catppuccin/discord/blob/main/themes/mocha.theme.css?raw=1"
+    dest: "/home/kabo/.config/BetterDiscord/themes/mocha.theme.css"
+
+- name: Enable BetterDiscord Catppucchin theme
+  ansible.builtin.copy:
+    dest: "/home/{{ local_user }}/.config/BetterDiscord/data/stable/themes.json"
+    content: |
+      {
+          "Catppuccin Mocha": true
+      }
+
 - name: Create update script
   ansible.builtin.copy:
     dest: "/usr/local/bin/discord_update.sh"
@@ -42,7 +78,10 @@
       if [[ $installed_version != $higher_version ]]; then
           deb_file="$TMPDIR/discord.deb"
           curl -L "$download_url" -o "$deb_file"
-          sudo dpkg -i "$deb_file"
+          dpkg -i "$deb_file"
+
+          # update BetterDiscord
+          su -c '/usr/local/bin/betterdiscordctl reinstall' {{ local_user }}
       fi
     mode: "0755"
   become: true
