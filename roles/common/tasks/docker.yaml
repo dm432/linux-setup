@@ -9,6 +9,7 @@
       - containerd
       - runc
     state: absent
+  become: true
 
 - name: Add Docker APT key 
   ansible.builtin.get_url:
@@ -21,6 +22,7 @@
     repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
     filename: docker
     state: present
+  become: true
 
 - name: Install Docker packages
   ansible.builtin.package:
@@ -31,3 +33,4 @@
       - docker-buildx-plugin
       - docker-compose-plugin
     state: latest
+  become: true

@@ -2,10 +2,12 @@
   ansible.builtin.apt:
     name: kubuntu-desktop 
     state: latest
+  become: true
 
 - name: Install KDE applications
   ansible.builtin.apt:
-    pkg:
+    name:
       - kontact 
       - kmail
     state: latest
+  become: true

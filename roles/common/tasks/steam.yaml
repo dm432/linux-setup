@@ -9,11 +9,12 @@
     repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/steam.gpg] https://repo.steampowered.com/steam/ stable steam
     filename: steam
     state: present
+  become: true
 
 - name: Install Steam 
   ansible.builtin.package:
     name: steam-launcher
     state: latest
-
+  become: true
 
 

@@ -3,6 +3,7 @@
   ansible.builtin.package:
     name: git
     state: absent
+  become: true
 
 - name: Install git dependencies
   ansible.builtin.package:
@@ -18,6 +19,7 @@
       - xmlto
       - docbook2x
     state: latest
+  become: true
 
 - name: Find latest git version
   ansible.builtin.uri:

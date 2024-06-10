@@ -2,12 +2,14 @@
   ansible.builtin.apt:
     name: zsh
     state: latest
+  become: true
 
 - name: Change user's shell to zsh
   ansible.builtin.user:
     name: "{{ local_user }}"
     shell: "/bin/zsh"
   ignore_errors: true
+  become: true
 
 - name: Download Oh My Zsh
   ansible.builtin.git:
@@ -84,6 +86,7 @@
   ansible.builtin.apt:
     name: tmux
     state: latest
+  become: true
 
 - name: Create Tmux config directory
   ansible.builtin.file:

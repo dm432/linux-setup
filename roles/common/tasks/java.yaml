@@ -1,3 +1,12 @@
+- name: Install SDKMAN! dependencies
+  ansible.builtin.apt:
+    name:
+      - zip
+      - unzip
+      - curl
+    state: latest
+  become: true
+
 - name: Check if SDKMAN! is already installed
   ansible.builtin.stat:
     path: "/home/{{ local_user }}/.sdkman/bin/sdkman-init.sh"

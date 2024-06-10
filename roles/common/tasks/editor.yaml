@@ -17,12 +17,14 @@
   ansible.builtin.apt:
     name: ripgrep
     state: latest
+  become: true
 
 # C compiler is needed
 - name: Install build-essential apt package
   ansible.builtin.apt:
     name: build-essential
     state: latest
+  become: true
 
 - name: Update .bashrc
   block:
@@ -74,3 +76,4 @@
   community.general.alternatives:
     name: "editor"
     path: "/opt/nvim-linux64/bin/nvim"
+  become: true

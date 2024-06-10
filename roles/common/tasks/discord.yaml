@@ -6,6 +6,7 @@
 - name: Install Discord .deb package
   ansible.builtin.apt:
     deb: "/tmp/discord.deb"
+  become: true
 
 - name: Create update script
   ansible.builtin.copy:
