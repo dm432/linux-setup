@@ -14,15 +14,31 @@
 
 - name: Create KDE plasma directory
   ansible.builtin.file:
-    dest: "/home/{{ local_user }}/.local/share/plasma"
+    dest: "/home/{{ local_user }}/.local/share/plasma/"
     state: directory
     recurse: true
  
 - name: Copy wallpaper
   ansible.builtin.copy:
-    src: "kde/wallpaper.png"
-    dest: "/home/{{ local_user }}/.local/share/plasma/wallpaper.png"
+    src: "kde/wallpapers/"
+    dest: "/home/{{ local_user }}/.local/share/plasma/wallpapers/"
+ 
+- name: Create color schemes directory
+  ansible.builtin.file:
+    dest: "/home/{{ local_user }}/.local/share/color-schemes/"
+    state: directory
+    recurse: true 
 
+- name: Copy color scheme
+  ansible.builtin.copy:
+    src: "kde/color-schemes/"
+    dest: "/home/{{ local_user }}/.local/share/color-schemes"
+
+- name: Install Papirus icon theme
+  ansible.builtin.apt:
+    name: papirus-icon-theme
+  become: true
+  
 - name: KDE Plasma theme init script
   ansible.builtin.copy:
     dest: "/usr/local/bin/plasma_theme_init.sh"
@@ -31,7 +47,10 @@
 
       USRNAME="$(whoami)"
 
-      plasma-apply-wallpaperimage /home/$USRNAME/.local/share/plasma/wallpaper.png
+      lookandfeeltool -a org.kde.breeze.desktop 
+      plasma-apply-colorscheme CatppuccinMochaMauve 
+      /usr/lib/x86_64-linux-gnu/libexec/plasma-changeicons Papirus
+      plasma-apply-wallpaperimage /home/$USRNAME/.local/share/plasma/wallpapers/dm432.png
     mode: "0755"
   become: true
 
