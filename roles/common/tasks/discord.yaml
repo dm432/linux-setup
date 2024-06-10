@@ -31,11 +31,23 @@
   become: true
   when: betterdiscord.stdout == "yes"
 
+- name: Create BetterDiscord theme directory
+  ansible.builtin.file:
+    dest: "/home/{{ local_user }}/.config/BetterDiscord/themes/"
+    state: directory
+    recurse: true
+
 - name: Download BetterDiscord Catppucchin theme
   ansible.builtin.get_url:
     url: "https://github.com/catppuccin/discord/blob/main/themes/mocha.theme.css?raw=1"
-    dest: "/home/kabo/.config/BetterDiscord/themes/mocha.theme.css"
+    dest: "/home/{{ local_user }}/.config/BetterDiscord/themes/mocha.theme.css"
 
+- name: Create BetterDiscord data theme directory
+  ansible.builtin.file:
+    dest: "/home/{{ local_user }}/.config/BetterDiscord/data/stable/"
+    state: directory
+    recurse: true
+ 
 - name: Enable BetterDiscord Catppucchin theme
   ansible.builtin.copy:
     dest: "/home/{{ local_user }}/.config/BetterDiscord/data/stable/themes.json"
