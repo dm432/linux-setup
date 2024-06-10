@@ -2,6 +2,7 @@
   ansible.builtin.apt_key:
     url: "https://repo.vivaldi.com/archive/linux_signing_key.pub"
     state: present
+  become: true
 
 - name: Add Vivaldi repository
   ansible.builtin.apt_repository:
@@ -14,5 +15,31 @@
   ansible.builtin.apt:
     name: vivaldi-stable
     state: latest
+  become: true
+
+- name: Find latest Vivaldi Catppuccin theme version
+  ansible.builtin.uri:
+    url: "https://api.github.com/repos/catppuccin/vivaldi/releases"
+    return_content: yes
+    validate_certs: no
+    body_format: raw
+  register: catppuccin_releases_response
+
+- name: Set Catppuccin theme version to latest
+  ansible.builtin.set_fact:
+    catppuccin_version: "{{ catppuccin_releases_response.json[0].tag_name }}"
+
+- name: Create Vivaldi theme directory
+  ansible.builtin.file:
+    dest: "/home/{{ local_user }}/.vivaldi/themes/"
+    state: directory
+    recurse: true
+
+- name: Download Catppuccin theme version {{ catppuccin_version }}
+  ansible.builtin.get_url:
+    url: "https://github.com/catppuccin/vivaldi/releases/download/{{ catppuccin_version }}/Catppuccin.Mocha.Mauve.zip"
+    dest: "/home/{{ local_user }}/.vivaldi/themes/Catppuccin.Mocha.Mauve.zip"
+
+
 
 

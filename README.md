@@ -25,6 +25,7 @@ This repo contains Ansible playbooks to configure your system as a development m
 #### Manual Steps that may be required:
 - _zsh as default shell:_ You may have to set default shell shell yourself to `/bin/zsh` for example if you are using distributed authentication.
 - _terminal font (only needed if you dont use WezTerm):_ You have to set your terminal font to any [Nerd Font](https://www.nerdfonts.com/).
+- _Vivaldi Catppuccin theme:_ Goto `Settings -> Themes -> Open Theme...` and select the `Catppuccin.Mocha.Mauve.zip` file located at `~/.vivaldi/themes`.
 
 ---
 
