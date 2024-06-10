@@ -73,6 +73,7 @@
 - name: Install WezTerm {{ wezterm_version }}
   ansible.builtin.apt:
     deb: "https://github.com/wez/wezterm/releases/download/{{ wezterm_version }}/wezterm-{{ wezterm_version }}.Ubuntu22.04.deb"
+  become: true
 
 - name: Copy WezTerm configuration
   ansible.builtin.copy:
@@ -103,3 +104,25 @@
 
 - name: Install Tmux plugins
   ansible.builtin.shell: "/home/{{ local_user }}/.tmux/plugins/tpm/bin/install_plugins"
+
+- name: Find latest zoxide version
+  ansible.builtin.uri:
+    url: "https://api.github.com/repos/ajeetdsouza/zoxide/releases"
+    return_content: yes
+    validate_certs: no
+    body_format: raw
+  register: zoxide_releases_response
+
+- name: Set zoxide version to latest
+  ansible.builtin.set_fact:
+    zoxide_version: "{{ zoxide_releases_response.json[0].tag_name | replace('v', '') }}"
+
+- name: Install zoxide {{ zoxide_version }}
+  ansible.builtin.apt:
+    deb: "https://github.com/ajeetdsouza/zoxide/releases/download/v{{ zoxide_version }}/zoxide_{{ zoxide_version }}-1_amd64.deb"
+  become: true
+
+- name: Install fzf
+  ansible.builtin.apt:
+    name: fzf
+  become: true
