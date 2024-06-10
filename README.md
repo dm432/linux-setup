@@ -53,6 +53,7 @@ Usefull scripts that are added by the playbooks:
   | Autocomplete: Previous                                    | `Ctrl + p`     |
   | Autocomplete: Next                                        | `Ctrl + n`     |
   | Autocomplete: Confirm                                     | `Ctrl + y`     |
+  | Undo Tree: Toggle menu                                    | `Space + r`    |
   | *Harpoon*: Toggle quick menu                              | `Space + h`    |
   | Harpoon: Add file                                         | `Space + a`    |
   | Harpoon: Jump to file 1                                   | `Ctrl + a`     |
