@@ -78,3 +78,28 @@
   ansible.builtin.copy:
     src: "shell/.wezterm.lua"
     dest: "/home/{{ local_user }}/.wezterm.lua"
+
+- name: Install Tmux
+  ansible.builtin.apt:
+    name: tmux
+    state: latest
+
+- name: Create Tmux config directory
+  ansible.builtin.file:
+    dest: "/home/{{ local_user }}/.config/tmux/"
+    state: directory
+    recurse: true
+
+- name: Copy Tmux configuration
+  ansible.builtin.copy:
+    src: "shell/tmux.conf"
+    dest: "/home/{{ local_user }}/.config/tmux/tmux.conf"
+
+- name: Download Tmux plugin manger
+  ansible.builtin.git:
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest: "/home/{{ local_user }}/.tmux/plugins/tpm"
+    depth: 1
+
+- name: Install Tmux plugins
+  ansible.builtin.shell: "/home/{{ local_user }}/.tmux/plugins/tpm/bin/install_plugins"

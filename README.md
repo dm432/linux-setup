@@ -38,12 +38,13 @@ Usefull scripts that are added by the playbooks:
   | Action                                                    | Key            |
   | --------------------------------------------------------- |--------------  |
   | Exit insert mode                                          | `jk`           |
+  | Vertical split                                            | `Leader + i`   |
+  | Horizontal split                                          | `Leader + u`   |
   | *Clear* Search Highlight                                  | `Space + c`    |
   | *Project View*: Open                                      | `Space + pv`   |
   | *Project View*: Create file                               | `%`            |
   | *Project View*: Create folder                             | `d`            |
-  | Find file in project (*Project Find*)                     | `Space + pf`   |
-  | Find file in git repository                               | `Ctrl + p`     |
+  | Find file in project (*Project Find*)                     | `Space + pf`   | | Find file in git repository                               | `Ctrl + p`     |
   | Search for word under cursor in project files             | `Space + pws`  |
   | Search for Word under cursor in project files             | `Space + pWs`  |
   | Search text in project files (*Project Search*)           | `Space + ps`   |
@@ -52,7 +53,7 @@ Usefull scripts that are added by the playbooks:
   | Autocomplete: Previous                                    | `Ctrl + p`     |
   | Autocomplete: Next                                        | `Ctrl + n`     |
   | Autocomplete: Confirm                                     | `Ctrl + y`     |
-  | *Harpoon*: Toggle quick menu                              | `Ctrl + h`     |
+  | *Harpoon*: Toggle quick menu                              | `Space + h`    |
   | Harpoon: Add file                                         | `Space + a`    |
   | Harpoon: Jump to file 1                                   | `Ctrl + a`     |
   | Harpoon: Jump to file 2                                   | `Ctrl + s`     |
@@ -76,8 +77,16 @@ Usefull scripts that are added by the playbooks:
 <details>
   <summary>Other Keybindings:</summary>
 
-  | Action                                                    | Key            |
-  | --------------------------------------------------------- |--------------  |
-  | WezTerm: Toogle fullscreen                                | `Ctrl + f`     |
+  | Action                                                    | Key              |
+  | --------------------------------------------------------- |------------------|
+  | WezTerm: Toogle fullscreen                                | `Ctrl + f`       |
+  | Tmux: Leader key                                          | `Ctrl + Space`   |
+  | Tmux: Vertical split                                      | `Leader + i`     |
+  | Tmux: Horizontal split                                    | `Leader + u`     |
+  | Tmux/Neovim: Navigate between windows                     | `Ctrl + h/j/k/l` |
+  | Tmux: Create window                                       | `Leader + c`     |
+  | Tmux: *Next* window                                       | `Leader + n`     |
+  | Tmux: Previous window                                     | `Leader + m`     |
+ 
 </details>
  
