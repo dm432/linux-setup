@@ -44,7 +44,8 @@ Usefull scripts that are added by the playbooks:
   | *Project View*: Open                                      | `Space + pv`   |
   | *Project View*: Create file                               | `%`            |
   | *Project View*: Create folder                             | `d`            |
-  | Find file in project (*Project Find*)                     | `Space + pf`   | | Find file in git repository                               | `Ctrl + p`     |
+  | Find file in project (*Project Find*)                     | `Space + pf`   |
+  | Find file in git repository                               | `Ctrl + p`     |
   | Search for word under cursor in project files             | `Space + pws`  |
   | Search for Word under cursor in project files             | `Space + pWs`  |
   | Search text in project files (*Project Search*)           | `Space + ps`   |
@@ -81,7 +82,7 @@ Usefull scripts that are added by the playbooks:
   | Action                                                    | Key              |
   | --------------------------------------------------------- |------------------|
   | WezTerm: Toogle fullscreen                                | `Ctrl + f`       |
-  | WezTerm: Open Emoji picker                                | `Ctrl + U`       |
+  | WezTerm: Open Emoji picker                                | `Ctrl +  U`       |
   | Tmux: Leader key                                          | `Ctrl + Space`   |
   | Tmux: Vertical split                                      | `Leader + i`     |
   | Tmux: Horizontal split                                    | `Leader + u`     |
