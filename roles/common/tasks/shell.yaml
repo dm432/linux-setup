@@ -7,7 +7,7 @@
 - name: Change user's shell to zsh
   ansible.builtin.user:
     name: "{{ local_user }}"
-    shell: "/bin/zsh"
+    shell: "/usr/bin/zsh"
   ignore_errors: true
   become: true
 
@@ -21,6 +21,7 @@
   ansible.builtin.copy:
     src: "shell/.zshrc"
     dest: "/home/{{ local_user }}/.zshrc"
+    backup: yes
 
 - name: Download zsh-autosuggestions plugin 
   ansible.builtin.git:
