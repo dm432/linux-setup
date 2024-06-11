@@ -1,6 +1,6 @@
 local wezterm = require 'wezterm'
 return {
-    default_prog = { '/usr/bin/zsh', '-l' },
+    default_prog = { '/usr/bin/tmux', '-l' },
 	color_scheme = 'Catppuccin Mocha',
 	enable_tab_bar = false,
 	font_size = 14.0,
