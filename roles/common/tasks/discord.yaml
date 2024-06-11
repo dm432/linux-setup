@@ -103,3 +103,4 @@
     name: "Discord Update"
     special_time: reboot
     job: "/usr/local/bin/discord_update.sh"
+  become: true
