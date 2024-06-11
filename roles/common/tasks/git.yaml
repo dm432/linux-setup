@@ -65,3 +65,21 @@
     name: "push.autoSetupRemote"
     scope: "global"
     value: "true"
+
+- name: Create global gitignore directory
+  ansible.builtin.file:
+    dest: "/home/{{ local_user }}/.config/git"
+    state: directory
+    recurse: true
+
+- name: Copy global gitignore
+  ansible.builtin.copy:
+    src: "git/ignore"
+    dest: "/home/{{ local_user }}/.config/git/ignore"
+ 
+- name: Set global gitignore path
+  community.general.git_config:
+    name: "core.excludesFile"
+    scope: "global"
+    value: "~/.config/git/ignore"
+
