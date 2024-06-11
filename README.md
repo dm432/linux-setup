@@ -38,44 +38,45 @@ Usefull scripts that are added by the playbooks:
 <details>
   <summary>Neovim Key Bindings: All remapped key bindings (and some default ones that I tend to forget)</summary>
 
-  | Action                                                    | Key            |
-  | --------------------------------------------------------- |--------------  |
-  | Exit insert mode                                          | `jk`           |
-  | Vertical split                                            | `Leader + i`   |
-  | Horizontal split                                          | `Leader + u`   |
-  | *Clear* Search Highlight                                  | `Space + c`    |
-  | *Project View*: Open                                      | `Space + pv`   |
-  | *Project View*: Create file                               | `%`            |
-  | *Project View*: Create folder                             | `d`            |
-  | Find file in project (*Project Find*)                     | `Space + pf`   |
-  | Find file in git repository                               | `Ctrl + p`     |
-  | Search for word under cursor in project files             | `Space + pws`  |
-  | Search for Word under cursor in project files             | `Space + pWs`  |
-  | Search text in project files (*Project Search*)           | `Space + ps`   |
-  | Search for neovim help tags (*Vim Help*)                  | `Space + vh`   |
-  | Autocomplete: Open                                        | `Ctrl + Space` |
-  | Autocomplete: Previous                                    | `Ctrl + p`     |
-  | Autocomplete: Next                                        | `Ctrl + n`     |
-  | Autocomplete: Confirm                                     | `Ctrl + y`     |
-  | Undo Tree: Toggle menu                                    | `Space + r`    |
-  | *Harpoon*: Toggle quick menu                              | `Space + h`    |
-  | Harpoon: Add file                                         | `Space + a`    |
-  | Harpoon: Jump to file 1                                   | `Ctrl + a`     |
-  | Harpoon: Jump to file 2                                   | `Ctrl + s`     |
-  | Harpoon: Jump to file 3                                   | `Ctrl + d`     |
-  | Harpoon: Jump to file 4                                   | `Ctrl + f`     |
-  | Fugitive: *Git* status                                    | `Space + g`    |
-  | lsp: *Goto Definition*                                    | `gd`           |
-  | lsp: Open hover window                                    | `K`            |
-  | lsp: *Rename*                                             | `Space + lrn`  |
-  | lsp: *Code action*                                        | `Space + lca`  |
-  | lsp: *Open references*                                    | `Space + lor`  |
-  | lsp: *Open floating* window                               | `Space + lof`  |
-  | List *buffers*                                            | `Space + b`    |
-  | *Next* buffer                                             | `Ctrl + n`     |
-  | Previous buffer                                           | `Ctrl + m`     |
-  | Conform: Trigger formatting                               | `Space + l`    |
-  | Open Mason menu                                           | `:Mason`       |
+  | Action                                                    | Key             |
+  | --------------------------------------------------------- |---------------- |
+  | Exit insert mode                                          | `jk`            |
+  | Vertical split                                            | `Leader + i`    |
+  | Horizontal split                                          | `Leader + u`    |
+  | *Clear* Search Highlight                                  | `Space + c`     |
+  | *Project View*: Open                                      | `Space + pv`    |
+  | *Project View*: Create file                               | `%`             |
+  | *Project View*: Create folder                             | `d`             |
+  | Find file in project (*Project Find*)                     | `Space + pf`    |
+  | Find file in git repository                               | `Ctrl + p`      |
+  | Search for word under cursor in project files             | `Space + pws`   |
+  | Search for Word under cursor in project files             | `Space + pWs`   |
+  | Search text in project files (*Project Search*)           | `Space + ps`    |
+  | Search for neovim help tags (*Vim Help*)                  | `Space + vh`    |
+  | Autocomplete: Open                                        | `Ctrl + Space`  |
+  | Autocomplete: Previous                                    | `Ctrl + p`      |
+  | Autocomplete: Next                                        | `Ctrl + n`      |
+  | Autocomplete: Confirm                                     | `Ctrl + y`      |
+  | Undo Tree: Toggle menu                                    | `Space + r`     |
+  | *Harpoon*: Toggle quick menu                              | `Space + h`     |
+  | Harpoon: Add file                                         | `Space + a`     |
+  | Harpoon: Jump to file 1                                   | `Ctrl + a`      |
+  | Harpoon: Jump to file 2                                   | `Ctrl + s`      |
+  | Harpoon: Jump to file 3                                   | `Ctrl + d`      |
+  | Harpoon: Jump to file 4                                   | `Ctrl + f`      |
+  | Fugitive: *Git* status                                    | `Space + g`     |
+  | lsp: *Goto Definition*                                    | `gd`            |
+  | lsp: Open hover window                                    | `K`             |
+  | lsp: *Rename*                                             | `Space + lrn`   |
+  | lsp: *Code action*                                        | `Space + lca`   |
+  | lsp: *Open references*                                    | `Space + lor`   |
+  | lsp: *Open floating* window                               | `Space + lof`   |
+  | List *buffers*                                            | `Space + b`     |
+  | *Next* buffer                                             | `Ctrl + n`      |
+  | Previous buffer                                           | `Ctrl + m`      |
+  | Jump to buffer                                            | `Meta + number` |
+  | Conform: Trigger formatting                               | `Space + l`     |
+  | Open Mason menu                                           | `:Mason`        |
 
 </details>
 
