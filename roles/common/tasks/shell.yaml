@@ -21,8 +21,6 @@
   ansible.builtin.copy:
     src: "shell/.zshrc"
     dest: "/home/{{ local_user }}/.zshrc"
-    owner: "{{ local_user }}"
-    group: "{{ local_user }}"
 
 - name: Download zsh-autosuggestions plugin 
   ansible.builtin.git:
