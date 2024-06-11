@@ -106,6 +106,9 @@
 - name: Install Tmux plugins
   ansible.builtin.shell: "/home/{{ local_user }}/.tmux/plugins/tpm/bin/install_plugins"
 
+- name: Source Tmux config
+  ansible.builtin.shell: "tmux source-file /home/{{ local_user }}/.config/tmux/tmux.conf"
+
 - name: Find latest zoxide version
   ansible.builtin.uri:
     url: "https://api.github.com/repos/ajeetdsouza/zoxide/releases"
