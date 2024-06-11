@@ -9,6 +9,7 @@
     name:
       - kontact 
       - kmail
+      - bup
     state: latest
   become: true
 
