@@ -43,6 +43,8 @@ Usefull scripts that are added by the playbooks:
   | Exit insert mode                                          | `jk`            |
   | Vertical split                                            | `Leader + i`    |
   | Horizontal split                                          | `Leader + u`    |
+  | Move half page screen *up*                                | `Ctrl + u`      |
+  | Move half page screen *down*                              | `Ctrl + d`      |
   | *Clear* Search Highlight                                  | `Space + c`     |
   | *Project View*: Open                                      | `Space + pv`    |
   | *Project View*: Create file/folder                        | `a`             |
