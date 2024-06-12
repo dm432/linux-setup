@@ -64,10 +64,10 @@ Usefull scripts that are added by the playbooks:
   | Undo Tree: Toggle menu                                    | `Space + r`     |
   | *Harpoon*: Toggle quick menu                              | `Space + h`     |
   | Harpoon: Add file                                         | `Space + a`     |
-  | Harpoon: Jump to file 1                                   | `Ctrl + a`      |
-  | Harpoon: Jump to file 2                                   | `Ctrl + s`      |
-  | Harpoon: Jump to file 3                                   | `Ctrl + d`      |
-  | Harpoon: Jump to file 4                                   | `Ctrl + f`      |
+  | Harpoon: Jump to file 1                                   | `Ctrl + 1`      |
+  | Harpoon: Jump to file 2                                   | `Ctrl + 2`      |
+  | Harpoon: Jump to file 3                                   | `Ctrl + 3`      |
+  | Harpoon: Jump to file 4                                   | `Ctrl + 4`      |
   | Fugitive: *Git* status                                    | `Space + g`     |
   | lsp: *Goto Definition*                                    | `gd`            |
   | lsp: Open hover window                                    | `K`             |
