@@ -61,6 +61,7 @@ return {
                 "ktlint",
                 "google-java-format",
                 "stylua",
+                "ast-grep",
             }
         })
 

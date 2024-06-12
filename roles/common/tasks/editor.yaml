@@ -13,16 +13,12 @@
     force: yes
   become: true
 
-- name: Install ripgrep apt package
+- name: Install required apt packages
   ansible.builtin.apt:
-    name: ripgrep
-    state: latest
-  become: true
-
-# C compiler is needed
-- name: Install build-essential apt package
-  ansible.builtin.apt:
-    name: build-essential
+    name:
+      - ripgrep
+      - build-essential # C compiler is needed 
+      - npm
     state: latest
   become: true
 

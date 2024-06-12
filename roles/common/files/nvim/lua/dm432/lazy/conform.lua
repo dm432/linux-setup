@@ -9,6 +9,7 @@ return {
 				lua = { "stylua" },
 				kotlin = { "ktlint" },
                 java = { "google-java-format" },
+                rust =  { "ast-grep" },
 			},
 		})
 
