@@ -45,8 +45,12 @@ Usefull scripts that are added by the playbooks:
   | Horizontal split                                          | `Leader + u`    |
   | *Clear* Search Highlight                                  | `Space + c`     |
   | *Project View*: Open                                      | `Space + pv`    |
-  | *Project View*: Create file                               | `%`             |
-  | *Project View*: Create folder                             | `d`             |
+  | *Project View*: Create file/folder                        | `a`             |
+  | *Project View*: Delete file/folder                        | `d`             |
+  | *Project View*: Cut file/folder                           | `c`             |
+  | *Project View*: Copy file/folder                          | `c`             |
+  | *Project View*: Paste file/folder                         | `p`             |
+  | *Project View*: Copy absolute file path                   | `g + y`         |
   | Find file in project (*Project Find*)                     | `Space + pf`    |
   | Find file in git repository                               | `Ctrl + p`      |
   | Search for word under cursor in project files             | `Space + pws`   |
