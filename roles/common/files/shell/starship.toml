@@ -8,6 +8,7 @@ command_timeout = 1000
 
 [git_branch]
 format =  '[$symbol$branch(:$remote_branch)]($style) '
+truncation_length = 32 
 
 [aws]
 format = '[$symbol(profile: "$profile" )(\(region: $region\) )]($style)'
