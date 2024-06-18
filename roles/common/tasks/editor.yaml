@@ -68,6 +68,12 @@
     dest: "/home/{{ local_user }}/.config/"
     backup: yes
 
+- name: "Copy custom Neovim config"
+  ansible.builtin.copy:
+    src: "intellij/.ideavimrc"
+    dest: "/home/{{ local_user }}/.ideavimrc/"
+    backup: yes
+
 - name: "Set Neovim as default editor"
   community.general.alternatives:
     name: "editor"

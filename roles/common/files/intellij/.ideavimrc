@@ -1,0 +1,48 @@
+" This file contains all settings from my neovim config that are supported by IdeaVim
+" See here: https://github.com/JetBrains/ideavim/blob/master/doc/set-commands.md
+
+" ----- set.lua -----
+set guicursor=''
+
+set nu
+set relativenumber
+
+set nowrap
+
+set hlsearch
+set incsearch
+set ignorecase
+
+set scrolloff=8
+
+" ----- remap.lua -----
+let mapleader=' '
+
+inoremap jk <Esc>
+
+nnoremap <leader>c :nohlsearch<CR>
+vnoremap <leader>c :nohlsearch<CR>
+
+nnoremap <leader>i :vsplit<CR>
+vnoremap <leader>i :vsplit<CR>
+nnoremap <leader>u :split<CR>
+vnoremap <leader>u :split<CR>
+
+sethandler <C-d> a:vim
+sethandler <C-u> a:vim
+nnoremap <C-d> <C-d>zz
+vnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+vnoremap <C-u> <C-u>zz
+
+sethandler <C-j> a:vim
+sethandler <C-k> a:vim
+nnoremap <C-h> <c-w>h
+nnoremap <C-l> <c-w>l
+nnoremap <C-j> <c-w>j
+nnoremap <C-k> <c-w>k
+
+" ----- tree.lua -----
+set NERDTree
+
+nnoremap <leader>pv :NERDTreeToggle<CR>

@@ -38,6 +38,9 @@ Usefull scripts that are added by the playbooks:
 <details>
   <summary>Neovim Key Bindings: All remapped key bindings (and some default ones that I tend to forget)</summary>
 
+
+  __IntelliJ Note:__ The playbook will create the `.ideavimrc` file in the users home directory to use with IntelliJ's `IdeaVim` plugin. Keep in mind that many keybinds listed here, especially from Neovim plugins, are not supported by `IdeaVim` and will not work.
+
   | Action                                                    | Key             |
   | --------------------------------------------------------- |---------------- |
   | Exit insert mode                                          | `jk`            |
