@@ -42,7 +42,52 @@ nnoremap <C-l> <c-w>l
 nnoremap <C-j> <c-w>j
 nnoremap <C-k> <c-w>k
 
+" ----- conform.lua -----
+nnoremap <leader>l :action ReformatCode<CR>
+vnoremap <leader>l :action ReformatCode<CR>
+
+" ----- git.lua -----
+nnoremap <leader>g :action ActivateVersionControlToolWindow<CR>
+
+" ----- init.lua -----
+nnoremap <leader>gd :action GotoDeclaration<CR>
+nnoremap K :action QuickJavaDoc<CR>
+nnoremap <leader>lrn :action RenameElement<CR>
+nnoremap <leader>lor :action FindUsages<CR>
+nnoremap <leader>lca :action ShowIntentionActions<CR>
+nnoremap <leader>lof :action ShowErrorDescription<CR>
+
+" ----- lsp.lua -----
+inoremap <C-leader> :action CodeCompletion<CR>
+
+" ----- lualine.lua -----
+nnoremap <M-1> :action GoToTab1<CR>
+vnoremap <M-1> :action GoToTab1<CR>
+nnoremap <M-2> :action GoToTab2<CR>
+vnoremap <M-2> :action GoToTab2<CR>
+nnoremap <M-3> :action GoToTab3<CR>
+vnoremap <M-3> :action GoToTab3<CR>
+nnoremap <M-4> :action GoToTab4<CR>
+vnoremap <M-4> :action GoToTab4<CR>
+nnoremap <M-5> :action GoToTab5<CR>
+vnoremap <M-5> :action GoToTab5<CR>
+nnoremap <M-6> :action GoToTab6<CR>
+vnoremap <M-6> :action GoToTab6<CR>
+nnoremap <M-7> :action GoToTab7<CR>
+vnoremap <M-7> :action GoToTab7<CR>
+nnoremap <M-8> :action GoToTab8<CR>
+vnoremap <M-8> :action GoToTab8<CR>
+nnoremap <M-9> :action GoToTab9<CR>
+vnoremap <M-9> :action GoToTab9<CR>
+
+" ----- telescope.lua -----
+nnoremap <leader>pf :action GotoFile<CR>
+nnoremap <leader>ps :action FindInPath<CR>
+sethandler <C-n> a:vim
+sethandler <C-m> a:vim
+nnoremap <C-n> :action NextTab<CR>
+nnoremap <C-m> :action PreviousTab<CR>
+
 " ----- tree.lua -----
 set NERDTree
-
 nnoremap <leader>pv :NERDTreeToggle<CR>
