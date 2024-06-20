@@ -40,6 +40,7 @@
         - "export EDITOR=\"nvim\""
         - "alias vi=\"nvim\""
         - "alias vim=\"nvim\""
+        - "alias vimdiff=\"nvim -d\""
       when: bashrc.stat.exists
 
 - name: Update .zshrc
@@ -60,6 +61,7 @@
         - "export EDITOR=\"nvim\""
         - "alias vi=\"nvim\""
         - "alias vim=\"nvim\""
+        - "alias vimdiff=\"nvim -d\""
       when: zshrc.stat.exists
 
 - name: "Copy custom Neovim config"
