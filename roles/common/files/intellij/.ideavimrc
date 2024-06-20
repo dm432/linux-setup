@@ -42,6 +42,11 @@ nnoremap <C-l> <c-w>l
 nnoremap <C-j> <c-w>j
 nnoremap <C-k> <c-w>k
 
+nnoremap <leader>y \"+y
+vnoremap <leader>y \"+y
+nnoremap <leader>p \"+p
+vnoremap <leader>p \"+p
+
 " ----- conform.lua -----
 nnoremap <leader>l :action ReformatCode<CR>
 vnoremap <leader>l :action ReformatCode<CR>

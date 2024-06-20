@@ -62,6 +62,8 @@ IntelliJ's `IdeaVim` plugin. See below for supported keybindings.
 | Horizontal split                                | `Leader + u`    | ✅                                |
 | Move half page screen *up*                      | `Ctrl + u`      | ✅                                |
 | Move half page screen *down*                    | `Ctrl + d`      | ✅                                |
+| Copy to system clipboard (`"+` register)*       | `Space + y`     | ✅                                |
+| Paste from system clipboard (`"+` register)*    | `Space + p`     | ✅                                |
 | *Clear* Search Highlight                        | `Space + c`     | ✅                                |
 | *Project View*: Open                            | `Space + pv`    | ✅ (`NerdTree` plugin)            |
 | *Project View*: Create file/folder              | `a`             | ❌                                |
@@ -100,6 +102,8 @@ IntelliJ's `IdeaVim` plugin. See below for supported keybindings.
 | Jump to buffer                                  | `Meta + number` | ✅                                |
 | Conform: Trigger formatting                     | `Space + l`     | ✅                                |
 | Open Mason menu                                 | `:Mason`        | ❌                                |
+
+*: Make sure have a working clipboard provider. See `:help clipboard` and `:checkhealth clipboard`.  
 
 </details>
 
