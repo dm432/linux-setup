@@ -1,4 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
+export HISTSIZE=1000000
 
 ZSH_THEME="robbyrussell"
 HYPHEN_INSENSITIVE="true"
