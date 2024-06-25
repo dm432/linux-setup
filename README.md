@@ -121,6 +121,9 @@ IntelliJ's `IdeaVim` plugin. See below for supported keybindings.
 | Tmux: Create window                   | `Leader + c`     |
 | Tmux: *Next* window                   | `Leader + n`     |
 | Tmux: Previous window                 | `Leader + m`     |
+| fzf: Paste file/folder to cmd line    | `Ctrl + t`       |
+| fzf: Paste from history to cmd line   | `Ctrl + r`       |
+| fzf: Cd into selected directory       | `Alt + c`        |
 
 </details>
  

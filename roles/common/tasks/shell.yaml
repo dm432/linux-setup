@@ -124,7 +124,10 @@
     deb: "https://github.com/ajeetdsouza/zoxide/releases/download/v{{ zoxide_version }}/zoxide_{{ zoxide_version }}-1_amd64.deb"
   become: true
 
-- name: Install fzf
+- name: Install fzf, ag and fd
   ansible.builtin.apt:
-    name: fzf
+    name:
+      - fzf
+      - silversearcher-ag
+      - fd-find 
   become: true
