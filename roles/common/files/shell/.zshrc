@@ -3,6 +3,7 @@ export HISTSIZE=1000000
 
 ZSH_THEME="robbyrussell"
 HYPHEN_INSENSITIVE="true"
+ZSH_DISABLE_COMPFIX="true"
 
 plugins=(
     git
