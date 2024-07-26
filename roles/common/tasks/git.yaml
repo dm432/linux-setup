@@ -21,18 +21,6 @@
     state: latest
   become: true
 
-- name: Find latest git version
-  ansible.builtin.uri:
-    url: "https://api.github.com/repos/git/git/tags"
-    return_content: yes
-    validate_certs: no
-    body_format: raw
-  register: git_tags_response
-
-- name: Set git version to latest
-  ansible.builtin.set_fact:
-    git_version: "{{ git_tags_response.json[0].name | replace('v', '')  }}"
-
 - name: Create Git directory
   ansible.builtin.file:
     dest: "/opt/git"
