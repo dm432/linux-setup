@@ -47,6 +47,8 @@ Usefull scripts that are added by the playbooks:
 - `discord_update.sh`: Checks for a newer version and updates the discord app if needed. Is run after each reboot, but
   can also be run manually.
 - `plasma_theme_init.sh`: Applies the kde plasma theme (only works when logged in to kde plasma).
+- `ck`: Switches to a coding keyboard layout. Remaps: `ö -> {`, `Ö -> [`, `ä -> }`, `Ä -> ]`.
+- `nk`: Switches back to the normal keyboard layout.
 
 <details>
   <summary>Neovim Key Bindings: All remapped key bindings (and some default ones that I tend to forget)</summary>

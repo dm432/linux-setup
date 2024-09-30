@@ -1,0 +1,59 @@
+- name: Create ~/bin directory
+  ansible.builtin.file:
+    dest: "/home/{{ local_user }}/bin"
+    state: directory
+    recurse: true
+
+- name: Copy coding-keyboard script
+  ansible.builtin.copy:
+    src: "utilities/coding-keyboard.sh"
+    dest: "/home/{{ local_user }}/bin/coding-keyboard.sh"
+    mode: "0755"
+    backup: no
+
+- name: Copy normal-keyboard script
+  ansible.builtin.copy:
+    src: "utilities/normal-keyboard.sh"
+    dest: "/home/{{ local_user }}/bin/normal-keyboard.sh"
+    mode: "0755"
+    backup: no
+
+- name: Update .bashrc
+  block:
+    - name: Check for .bashrc
+      ansible.builtin.stat:
+        path: "/home/{{ local_user }}/.bashrc"
+      register: bashrc
+      changed_when: false
+
+    - name: Add scripts for keyboard remapping to .bashrc
+      ansible.builtin.lineinfile:
+        path: "/home/{{ local_user }}/.bashrc"
+        line: "{{ item }}"
+        state: present
+      loop:
+        - "export PATH=\"/home/{{ local_user }}/bin:$PATH\""
+        - "alias ck=\"coding-keyboard.sh\""
+        - "alias nk=\"normal-keyboard.sh\""
+      when: bashrc.stat.exists
+
+- name: Update .zshrc
+  block:
+    - name: Check for .zshrc
+      ansible.builtin.stat:
+        path: "/home/{{ local_user }}/.zshrc"
+      register: zshrc
+      changed_when: false
+
+    - name: Add scripts for keyboard remapping to .zshrc
+      ansible.builtin.lineinfile:
+        path: "/home/{{ local_user }}/.zshrc"
+        line: "{{ item }}"
+        state: present
+      loop:
+        - "export PATH=\"/home/{{ local_user }}/bin:$PATH\""
+        - "alias ck=\"coding-keyboard.sh\""
+        - "alias nk=\"normal-keyboard.sh\""
+      when: zshrc.stat.exists
+
+-

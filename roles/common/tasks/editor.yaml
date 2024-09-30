@@ -71,7 +71,7 @@
     dest: "/home/{{ local_user }}/.config/"
     backup: yes
 
-- name: "Copy custom Neovim config"
+- name: "Copy custom IdeaVim config"
   ansible.builtin.copy:
     src: "intellij/.ideavimrc"
     dest: "/home/{{ local_user }}/.ideavimrc"
