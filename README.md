@@ -104,6 +104,8 @@ IntelliJ's `IdeaVim` plugin. See below for supported keybindings.
 | Jump to buffer                                  | `Meta + number` | ✅                                |
 | Conform: Trigger formatting                     | `Space + l`     | ✅                                |
 | Open Mason menu                                 | `:Mason`        | ❌                                |
+| LaTex: Start *compiler*                         | `Space + ltc`   | ❌                                |
+| LaTex: Open PDF *view*                          | `Space + ltv`   | ❌                                |
 
 *: Make sure have a working clipboard provider. See `:help clipboard` and `:checkhealth clipboard`.  
 

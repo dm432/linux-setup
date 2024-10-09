@@ -20,6 +20,8 @@
       - build-essential # C compiler is needed 
       - npm
       - luarocks
+      - texlive-full
+      - zathura # PDF reader for LaTex
     state: latest
   become: true
 
