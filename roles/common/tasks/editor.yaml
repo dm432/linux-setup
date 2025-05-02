@@ -1,6 +1,6 @@
 - name: "Install Neovim from GitHub Releases"
   ansible.builtin.unarchive:
-    src: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
+    src: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz"
     dest: "/opt/"
     remote_src: yes
   become: true
@@ -8,7 +8,7 @@
 - name: "Create Neovim symlink"
   ansible.builtin.file:
     dest: "/usr/local/bin/nvim"
-    src: "/opt/nvim-linux64/bin/nvim"
+    src: "/opt/nvim-linux-x86_64/bin/nvim"
     state: link
     force: yes
   become: true
@@ -82,5 +82,5 @@
 - name: "Set Neovim as default editor"
   community.general.alternatives:
     name: "editor"
-    path: "/opt/nvim-linux64/bin/nvim"
+    path: "/opt/nvim-linux-x86_64/bin/nvim"
   become: true
