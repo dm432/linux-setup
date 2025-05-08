@@ -47,6 +47,8 @@ vnoremap <leader>y \"+y
 nnoremap <leader>p \"+p
 vnoremap <leader>p \"+p
 
+nnoremap <leader>d \"_d
+
 " ----- conform.lua -----
 nnoremap <leader>l :action ReformatCode<CR>
 vnoremap <leader>l :action ReformatCode<CR>

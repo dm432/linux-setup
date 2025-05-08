@@ -66,6 +66,7 @@ IntelliJ's `IdeaVim` plugin. See below for supported keybindings.
 | Move half page screen *down*                    | `Ctrl + d`      | ✅                                |
 | Copy to system clipboard (`"+` register)*       | `Space + y`     | ✅                                |
 | Paste from system clipboard (`"+` register)*    | `Space + p`     | ✅                                |
+| Delete to void register (delete without cutting)| `Space + d`     | ✅                                |
 | *Clear* Search Highlight                        | `Space + c`     | ✅                                |
 | *Project View*: Open                            | `Space + pv`    | ✅ (`NerdTree` plugin)            |
 | *Project View*: Create file/folder              | `a`             | ❌                                |
