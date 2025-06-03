@@ -22,3 +22,8 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias ln="ln -i"
 alias rm="rm -I --preserve-root"
+
+# fetch and rebase
+alias gfr='git fetch && git rebase --update-refs origin/main'
+# fetch and rebase interactively
+alias gfri='git fetch && git rebase -i --update-refs origin/main'
